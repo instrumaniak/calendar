@@ -4,6 +4,8 @@ const express = require("express")
 const bodyPaser = require("body-parser")
 const app = express()
 
+app.set('port', (process.env.PORT || 3000))
+
 app.use(bodyPaser.urlencoded({extended: true}))
 
 app.get('/', function(req, res){
@@ -14,6 +16,6 @@ app.post('/events', function(req, res){
 	console.log(req.body)
 })
 
-app.listen(3000, function(){
-	console.log("Listening on port 3000...")
+app.listen(app.get('port'), function(){
+	console.log("Listening on port: " + app.get('port'))
 })
