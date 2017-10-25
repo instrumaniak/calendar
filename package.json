@@ -1,0 +1,27 @@
+{
+  "name": "calendar-webapp",
+  "version": "0.1.0",
+  "description": "This a demo fullstack javascipt web app.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/instrumaniak/calendar-webapp.git"
+  },
+  "keywords": [],
+  "author": "Raziur Rahman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/instrumaniak/calendar-webapp/issues"
+  },
+  "homepage": "https://github.com/instrumaniak/calendar-webapp#readme",
+  "engines": {
+    "node": "6.9.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
