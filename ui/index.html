@@ -30,7 +30,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Event Calendar</a>
+
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Event Calendar</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,10 +63,8 @@
             <div>
                 <div class="row">
                     <div class="col-md-4">
-                        <h3>What?</h3>
 
-                        <p>Attach Angular objects to a calendar.</p>
-                        <p>Show the data binding between two different calendars using the same event sources.</p>
+                        <p>This is based on angular ui calendar.</p>
                         
                         <div class="btn-group calTools">
                           <button class="btn" ng-click="changeLang()">
@@ -79,15 +78,18 @@
                           </button>
                         </div>
 
-                        <ul class="unstyled">
-                            <li ng-repeat="e in events">
+                        <br/>
+                        <br/>
+
+                        
+                            <div ng-repeat="e in events">
                                 <div class="alert alert-info">
-                                    <a class="close" ng-click="remove($index)"><i class="icon-remove"></i></a>
+                                    <a class="close" ng-click="remove($index)"><i class="glyphicon glyphicon-remove"></i></a>
                                     <b> <input ng-model="e.title"></b> 
                                     {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
                                 </div>
-                            </li>
-                        </ul>
+                            </div>
+                        
 
                     </div>
 
@@ -101,11 +103,11 @@
                                 <h4>{{alertMessage}}</h4>
                               </div>
                               <div class="btn-toolbar">
-                                <p class="pull-right lead">View Options</p>
+                                
                                 <div class="btn-group">
-                                    <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar1')">AgendaDay</button>
-                                    <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar1')">AgendaWeek</button>
-                                    <button class="btn btn-success" ng-click="changeView('month', 'myCalendar1')">Month</button>
+                                    <button class="btn" ng-click="changeView('agendaDay', 'myCalendar1')">AgendaDay</button>
+                                    <button class="btn" ng-click="changeView('agendaWeek', 'myCalendar1')">AgendaWeek</button>
+                                    <button class="btn" ng-click="changeView('month', 'myCalendar1')">Month</button>
                                 </div>
                               </div>
                             <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>

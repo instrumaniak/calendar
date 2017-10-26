@@ -8,11 +8,11 @@ app.set('port', (process.env.PORT || 3000))
 
 app.use(bodyPaser.urlencoded({extended: true}))
 app.use('/bower_components', express.static('bower_components'))
-app.use(express.static('demo'))
+app.use(express.static('ui'))
 
 
 app.get('/', function(req, res){
-	res.sendFile(__dirname + '/demo/index.html')
+	res.sendFile(__dirname + '/ui/index.html')
 })
 
 app.post('/events', function(req, res){
