@@ -1,0 +1,22 @@
+{
+  "name": "calendar-webapp",
+  "description": "This a demo fullstack javascipt web app.",
+  "main": "server.js",
+  "authors": [
+    "Raziur Rahman"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/instrumaniak/calendar-webapp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-calendar": "^1.0.2",
+    "bootstrap-css": "^3.3.7",
+    "angular-bootstrap": "^2.5.0"
+  }
+}
