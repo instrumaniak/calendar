@@ -108,6 +108,7 @@ calendarDemoApp.controller('CalendarCtrl',
         selectable: true,
         selectHelper: true,
         eventDurationEditable: true,
+        eventResourceEditable: true,
         header:{
           center: 'title',
           left: 'month,agendaWeek,agendaDay',

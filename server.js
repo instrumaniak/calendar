@@ -2,11 +2,15 @@
 
 const express = require("express")
 const bodyPaser = require("body-parser")
+const compression = require("compression")
+
 const app = express()
+
 
 app.set('port', (process.env.PORT || 3000))
 
 app.use(bodyPaser.urlencoded({extended: true}))
+app.use(compression())
 app.use('/bower_components', express.static('bower_components'))
 app.use(express.static('ui'))
 
