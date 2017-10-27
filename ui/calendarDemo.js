@@ -105,9 +105,12 @@ calendarDemoApp.controller('CalendarCtrl',
       calendar:{
         height: 450,
         editable: true,
+        selectable: true,
+        selectHelper: true,
+        eventDurationEditable: true,
         header:{
-          left: 'title',
-          center: '',
+          center: 'title',
+          left: 'month,agendaWeek,agendaDay',
           right: 'today prev,next'
         },
         eventClick: $scope.alertOnEventClick,

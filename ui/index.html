@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="calendarDemoApp" id="top">
 <head>
-    <title>AngularUI Calendar for AngularJS</title>
+    <title>Event Calendar</title>
     <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="/bower_components/bootstrap-css/css/bootstrap.css" />
-    <link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.css">
-    <!-- link rel="stylesheet" href="calendarDemo.css" / -->
+    <link rel="stylesheet" href="/bower_components/bootstrap-css/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bower_components/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="calendarDemo.css" />
 
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-
-    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap-css/js/bootstrap.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="/bower_components/moment/moment.js"></script>
-    <script src="/bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="/bower_components/fullcalendar/dist/gcal.js"></script>
     
     <script src="/bower_components/angular-ui-calendar/src/calendar.js"></script>
@@ -62,60 +62,17 @@
         <section id="directives-calendar" ng-controller="CalendarCtrl">
             <div>
                 <div class="row">
-                    <div class="col-md-4">
-
-                        <p>This is based on angular ui calendar.</p>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
                         
-                        <div class="btn-group calTools">
-                          <button class="btn" ng-click="changeLang()">
-                            {{changeTo}}
-                          </button>              
-                          <button class="btn" ng-click="addRemoveEventSource(eventSources,eventSource)">
-                            Toggle Source
-                          </button>
-                          <button type="button" class="btn btn-primary" ng-click="addEvent()">
-                            Add Event
-                          </button>
-                        </div>
-
-                        <br/>
-                        <br/>
-
-                        
-                            <div ng-repeat="e in events">
-                                <div class="alert alert-info">
-                                    <a class="close" ng-click="remove($index)"><i class="glyphicon glyphicon-remove"></i></a>
-                                    <b> <input ng-model="e.title"></b> 
-                                    {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
-                                </div>
-                            </div>
-                        
-
-                    </div>
-
-                    <div class="col-md-8">
-                        <tabset>
-                            <tab select="renderCalendar('myCalendar1');">
-                              <tab-heading>
-                               
-                              </tab-heading>
                               <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
-                                <h4>{{alertMessage}}</h4>
+                                <p>{{alertMessage}}</p>
                               </div>
-                              <div class="btn-toolbar">
-                                
-                                <div class="btn-group">
-                                    <button class="btn" ng-click="changeView('agendaDay', 'myCalendar1')">AgendaDay</button>
-                                    <button class="btn" ng-click="changeView('agendaWeek', 'myCalendar1')">AgendaWeek</button>
-                                    <button class="btn" ng-click="changeView('month', 'myCalendar1')">Month</button>
-                                </div>
-                              </div>
+                              
                             <div class="calendar" ng-model="eventSources" calendar="myCalendar1" ui-calendar="uiConfig.calendar"></div>
-                           </tab>
-                           
-                           
-                        </tabset>
+                          
                     </div>
+                    <div class="col-md-1"></div>
                 </div>
             </div>
         
@@ -123,5 +80,8 @@
     </div>
 </div>
   
+  <footer>
+    <p><small>Ninjutsu by Raziur Rahman, 2017.  ;-) </small></p>
+  </footer>
     </body>
 </html>
