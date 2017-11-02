@@ -9,7 +9,7 @@ calendarDemoApp.controller('CalendarCtrl',
    
     $scope.events = [];
 
-    $http.get('/events.json').then(function(response){
+    $http.get('/events').then(function(response){
       var data = response.data;
       
       angular.forEach(data, function(data){
@@ -77,8 +77,8 @@ calendarDemoApp.controller('CalendarCtrl',
         eventClick: $scope.alertOnEventClick,
         eventDrop: $scope.alertOnDrop,
         eventResize: $scope.alertOnResize,
-        select: $scope.addEvent
-        
+        select: $scope.addEvent,
+              
         
       }
     };

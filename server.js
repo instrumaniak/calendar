@@ -10,15 +10,17 @@ const mongoose = require("mongoose")
 const eventsEndPoint = require("./routes")
 
 //Configure Mongoose
+var MDBURL = process.env.MDBURL || 'mongodb://localhost/test'
+
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/test',{
+mongoose.connect(MDBURL,{
 	useMongoClient: true
 })
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'Connection error: '))
 db.once('open', ()=>{
-	console.log('Connected')
+	console.log('Connected to Mongodb')
 })
 
 //Configure express
