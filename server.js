@@ -27,6 +27,7 @@ db.once('open', ()=>{
 const app = express()
 app.set('port', (process.env.PORT || 3000))
 app.use(morgan('tiny'))
+app.use(bodyPaser.json())
 app.use(bodyPaser.urlencoded({extended: true}))
 app.use(compression())
 app.use('/bower_components', express.static('bower_components'))

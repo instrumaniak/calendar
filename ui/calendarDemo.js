@@ -2,17 +2,23 @@
  * calendarDemoApp - from angular-ui-caldender demo
  * clean up & adaption by Raziur Rahman, 2017
  */
-var calendarDemoApp = angular.module('calendarDemoApp', ['ui.calendar', 'ui.bootstrap']);
+var calendarDemoApp = angular.module('calendarDemoApp', ['ngResource', 'ui.calendar', 'ui.bootstrap']);
+
+calendarDemoApp.factory('Event',['$resource', function($resource){
+  return $resource('/events/:id', null, {
+    'update': {method: 'PUT'}
+  });
+}]);
 
 calendarDemoApp.controller('CalendarCtrl',
-   function($scope, $http, uiCalendarConfig) {
+   function($scope, $http, Event, uiCalendarConfig) {
    
     $scope.events = [];
 
-    $http.get('/events').then(function(response){
-      var data = response.data;
-      
-      angular.forEach(data, function(data){
+    //$http.get('/events').then(function(response){
+     // var data = response.data;
+     var data = Event.query(function(){
+        angular.forEach(data, function(data){
         $scope.events.push({
           id: data.id,
           title: data.title,
@@ -23,8 +29,21 @@ calendarDemoApp.controller('CalendarCtrl',
         })
       });
       
+     });
       
-    });
+    /*  angular.forEach(data, function(data){
+        $scope.events.push({
+          id: data.id,
+          title: data.title,
+          start: data.start,
+          end: data.end,
+          url: data.url,
+          stick: true
+        })
+      });
+      
+      */
+    //});
 
 
     $scope.alertOnEventClick = function( date, jsEvent, view){
@@ -44,12 +63,21 @@ calendarDemoApp.controller('CalendarCtrl',
     $scope.addEvent = function(start, end) {
       var title = prompt("Enter title");
       if(title){
-          $scope.events.push({
+
+        Event.save({
+            title: title,
+            start: start,
+            end: end
+          }, function(){
+            $scope.events.push({
             title: title,
             start: start,
             end: end,
             stick: true
-          });
+          })
+          }
+
+          );
         }
       uiCalendarConfig.calendars.myCalendar.fullCalendar('unselect');
     };
