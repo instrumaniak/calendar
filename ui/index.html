@@ -12,6 +12,7 @@
     <script src="/bower_components/bootstrap-css/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="/bower_components/moment/min/moment.min.js"></script>
     <script src="/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
@@ -19,8 +20,10 @@
     
     <script src="/bower_components/angular-ui-calendar/src/calendar.js"></script>
     <script src="calendarDemo.js"></script>
+
+    
 </head>
-<body data-spy="scroll">
+<body data-spy="scroll" ng-controller="NavCtrl">
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -33,16 +36,16 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Event Calendar</a>
+      <a class="navbar-brand" href="" ng-click="loadCalendar()"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Event Calendar</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Calendar <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">About</a></li>
-        <li class="dropdown">
+        <li ng-class="navClass('calendar')"><a href="" ng-click="loadCalendar()">Calendar <span class="sr-only">(current)</span></a></li>
+        <li ng-class="navClass('about')"><a href="" ng-click="loadAbout()">About</a></li>
+        <!--li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -51,7 +54,7 @@
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>
-        </li>
+        </li-->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -61,7 +64,8 @@
 
 <div role="main">
     <div class="container-fluid">
-        <section id="directives-calendar" ng-controller="CalendarCtrl">
+        <div ng-view></div>
+        <script type="text/ng-template" id="/calendar.html">
             
                 <div class="row">
                     <div class="col-md-1"></div>
@@ -76,9 +80,12 @@
                     </div>
                     <div class="col-md-1"></div>
                 </div>
-            
-        
-        </section>
+        </script>
+        <script type="text/ng-template" id="/about.html">
+          <div class="col-md-1"></div>
+          <div class="col-md-10"><p>Hello about!! </p></div>
+          <div class="col-md-1"></div>
+        </script>
     </div>
 </div>
   

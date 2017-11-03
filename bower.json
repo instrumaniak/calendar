@@ -18,7 +18,8 @@
     "angular-ui-calendar": "^1.0.2",
     "bootstrap-css": "^3.3.7",
     "angular-bootstrap": "^2.5.0",
-    "angular-resource": "1.4.x"
+    "angular-resource": "1.4.x",
+    "angular-route": "1.4.x"
   },
   "resolutions": {
     "angular": "~1.4.x"
