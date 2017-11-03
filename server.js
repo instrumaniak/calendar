@@ -30,8 +30,13 @@ app.use(morgan('tiny'))
 app.use(bodyPaser.json())
 app.use(bodyPaser.urlencoded({extended: true}))
 app.use(compression())
-app.use('/bower_components', express.static('bower_components'))
+
+//Serve Static contents
 app.use(express.static('ui'))
+app.use(express.static('dest'))
+app.use('/fonts', express.static('bower_components/bootstrap-css/fonts'))
+
+//API endpoints
 app.use('/events', eventsEndPoint)
 
 app.listen(app.get('port'), ()=> {
