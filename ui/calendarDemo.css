@@ -8,3 +8,7 @@ footer {
 .fc button {
 	font-size: 0.9em;
 }
+
+.hint {
+	color: #999;
+}

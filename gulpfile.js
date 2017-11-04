@@ -6,7 +6,7 @@ const concat = require('gulp-concat')
 
 var css = [
 	"./bower_components/bootstrap-css/css/bootstrap.min.css",
-    "./bower_components/fullcalendar/dist/fullcalendar.min.css"
+    "./bower_components/fullcalendar/dist/fullcalendar.min.css",
 ]
 
 var js = [
