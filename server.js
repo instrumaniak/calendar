@@ -10,7 +10,7 @@ const mongoose = require("mongoose")
 const eventsEndPoint = require("./routes")
 
 //Configure Mongoose
-var MDBURL = process.env.MDBURL || 'mongodb://localhost/test'
+const MDBURL = process.env.MDBURL || 'mongodb://localhost/test'
 
 mongoose.Promise = global.Promise
 mongoose.connect(MDBURL,{
