@@ -59,9 +59,9 @@
   //---------- Calendar view ||controller|| ----------> 
   calendarDemoApp.controller('CalendarCtrl',
 
-    ['$scope', '$location', 'Event', 'uiCalendarConfig',
+    ['$scope', '$compile', '$location', 'Event', 'uiCalendarConfig',
 
-      function($scope, $location, Event, uiCalendarConfig) {
+      function($scope, $compile, $location, Event, uiCalendarConfig) {
 
         $scope.events = Event.query(function() {
           angular.forEach($scope.events, function(item) {
@@ -83,7 +83,14 @@
           uiCalendarConfig.calendars.myCalendar.fullCalendar('unselect');
         };
     
-
+          
+        /* Render Tooltip */
+        $scope.eventRender = function( event, element, view ) { 
+            element.attr({'uib-tooltip': event.title,
+                         'tooltip-append-to-body': true});
+            $compile(element)($scope);
+        };
+          
         // Configure angular-ui-calendar
         $scope.uiConfig = {
           calendar: {
@@ -102,6 +109,7 @@
             },
             eventClick: $scope.eventClick,
             select: $scope.addEvent,
+            eventRender: $scope.eventRender
           }
         };
 
