@@ -1,5 +1,14 @@
-@import '~react-big-calendar/lib/css/react-big-calendar.css';
+/**
+ *  Styles
+ *  prefix everything with: c
+ *  eg: $c-gray, .c-page-container
+ */
+
+
+@import 'bootstrap';
 
 @import 'base';
 @import 'page';
 @import 'misc';
+
+@import 'bigcalendar';

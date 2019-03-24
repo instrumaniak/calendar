@@ -6,7 +6,7 @@ const localizer = BigCalendar.momentLocalizer(moment)
 
 const PageHome = () => {
   return (
-    <div style={{height: '80vh'}}>
+    <div className='c-bigcalendar-container'>
       <BigCalendar
         localizer={localizer}
         events={[]}

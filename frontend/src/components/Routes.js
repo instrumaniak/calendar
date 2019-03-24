@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import PageHome from './PageHome'
 import PageAbout from './PageAbout'
 import PageEventEdit from './PageEventEdit'
 
 const Routes = () => (
-  <div className='c-page-container'>
+  <Fragment>
     <Route path='/' exact component={PageHome} />
     <Route path='/about' component={PageAbout} />
     <Route path='/event/:id' component={PageEventEdit} />
-  </div>
+  </Fragment>
 )
 
 export default Routes

@@ -1,0 +1,40 @@
+// React Big Calendar style modifications
+
+// Import default styles
+@import '~react-big-calendar/lib/css/react-big-calendar.css';
+
+// apply custom styles
+.rbc-calendar {
+  // Toolbar Text
+  .rbc-toolbar-label {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+
+  // Toolbar button group
+  .rbc-btn-group {
+    opacity: 0.85;
+    button {
+      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+
+      &.rbc-active {
+        box-shadow: unset;
+        //border-color: unset;
+        //background-color: $light;
+      }
+    }
+  }
+
+  // Calendar offrange date
+  .rbc-off-range-bg {
+    //opacity: 0.25;
+    background-color: $light;
+  }
+}
+
+// style for calendar container
+.c-bigcalendar-container {
+  height: calc(100vh - 56px); // To fit screen deduct navbar height
+  padding: 0.5rem;
+}
