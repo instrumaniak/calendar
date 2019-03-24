@@ -1,20 +1,18 @@
 // Server
-// Raziur Rahman, 2017
 
 const express = require("express")
-const bodyPaser = require("body-parser")
 const compression = require("compression")
 const morgan = require("morgan")
 const mongoose = require("mongoose")
-
+const path = require("path")
 const eventsEndPoint = require("./routes")
 
 //Configure Mongoose
-const MDBURL = process.env.MDBURL || 'mongodb://localhost/test'
+const MDBURL = process.env.MDBURL || 'mongodb://localhost/calendar'
 
 mongoose.Promise = global.Promise
 mongoose.connect(MDBURL,{
-	useMongoClient: true
+	useNewUrlParser: true
 })
 
 const db = mongoose.connection
@@ -25,16 +23,15 @@ db.once('open', ()=>{
 
 //Configure express
 const app = express()
-app.set('port', (process.env.PORT || 3000))
+app.set('port', (process.env.PORT || 5000))
 app.use(morgan('tiny'))
-app.use(bodyPaser.json())
-app.use(bodyPaser.urlencoded({extended: true}))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(compression())
 
 //Serve Static contents
-app.use(express.static('ui'))
-app.use(express.static('dest'))
-app.use('/fonts', express.static('bower_components/bootstrap-css/fonts'))
+app.use(express.static(path.resolve(__dirname, '../ui')))
+
 
 //API endpoints
 app.use('/events', eventsEndPoint)

@@ -1,0 +1,19 @@
+{
+  "name": "calendar-backend",
+  "version": "0.1.0",
+  "description": "This the backend of calendar web app.",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "Raziur Rahman",
+  "engines": {
+    "node": "10"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19",
+    "morgan": "^1.9.1"
+  }
+}
