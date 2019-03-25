@@ -17,7 +17,7 @@ const NavBar = () => {
   const closeNav = () => setIsOpen(false)
 
   return (
-    <Navbar color='light' light expand='md'>
+    <Navbar fixed='top' color='white' light expand='md' className='shadow-sm'>
       <NavbarBrand tag={Link} to='/' onClick={closeNav}>Calendar</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>

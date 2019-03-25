@@ -9,6 +9,7 @@ const PageHome = () => {
     <div className='c-bigcalendar-container'>
       <BigCalendar
         localizer={localizer}
+        toolbar={false}
         events={[]}
       />
     </div>

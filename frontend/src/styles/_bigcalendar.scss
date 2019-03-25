@@ -11,6 +11,14 @@
     font-weight: 300;
   }
 
+  // typography
+  .rbc-header {
+    font-weight: normal;
+  }
+  .rbc-date-cell {
+    font-size: 0.8rem;
+  }
+
   // Toolbar button group
   .rbc-btn-group {
     opacity: 0.85;
@@ -36,5 +44,5 @@
 // style for calendar container
 .c-bigcalendar-container {
   height: calc(100vh - 56px); // To fit screen deduct navbar height
-  padding: 0.5rem;
+  margin-top: 56px;
 }

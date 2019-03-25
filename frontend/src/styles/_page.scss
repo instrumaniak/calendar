@@ -4,4 +4,7 @@
 
  .c-page-container {
     padding: 0.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 56px; // for fixed navbar
  }
