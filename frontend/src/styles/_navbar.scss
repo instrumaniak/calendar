@@ -1,0 +1,21 @@
+// Navbar styles
+
+
+// calendar toolbar
+@include media-breakpoint-up(md) {
+  .c-calendar-toolbar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .title {
+      font-size: 1.4rem;
+      margin-right: 2rem;
+      font-weight: 300;
+    }
+
+    .icon-set {
+      vertical-align: text-bottom;
+    }
+  }
+}
