@@ -39,6 +39,18 @@
     //opacity: 0.25;
     background-color: $light;
   }
+
+  // Events
+  .rbc-row {
+    &-segment {
+      padding: 0 3px 2px 2px;
+
+      .rbc-event {
+        background-color: rgba(0, 0, 0, 0.35);
+        font-size: 0.75rem;
+      }
+    }
+  }
 }
 
 // style for calendar container

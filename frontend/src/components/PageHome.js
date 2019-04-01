@@ -10,7 +10,18 @@ const PageHome = () => {
       <BigCalendar
         localizer={localizer}
         toolbar={false}
-        events={[]}
+        events={[
+          {
+            title: 'Test Event',
+            start: new Date(),
+            end: new Date()
+          },
+          {
+            title: 'Test Event 2',
+            start: new Date(),
+            end: new Date()
+          }
+        ]}
       />
     </div>
   )

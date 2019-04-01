@@ -10,6 +10,8 @@ import {
   NavLink
 } from 'reactstrap'
 
+import { Calendar } from 'react-feather'
+
 const NavBar = () => {
   const [ isOpen, setIsOpen ] = useState(false) // state for toggling navbar
 
@@ -18,7 +20,7 @@ const NavBar = () => {
 
   return (
     <Navbar fixed='top' color='white' light expand='md' className='shadow-sm'>
-      <NavbarBrand tag={Link} to='/' onClick={closeNav}>Calendar</NavbarBrand>
+      <NavbarBrand tag={Link} to='/' onClick={closeNav}><Calendar/> Calendar</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className='ml-auto' navbar>

@@ -1,14 +1,6 @@
-footer {
-  padding-top: 50px;
-  padding-bottom: 10px;
-  margin-top: 100px;
-  text-align: center;
-}
+// Various fixes
 
-.fc button {
-  font-size: 0.9em;
-}
-
-.hint {
-  color: #999;
+// fix alignment of logo with text on navbar log
+.navbar-brand svg {
+  vertical-align: text-bottom;
 }
