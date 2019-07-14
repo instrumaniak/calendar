@@ -30,11 +30,11 @@ app.use(express.urlencoded({extended: true}))
 app.use(compression())
 
 //Serve Static contents
-app.use(express.static(path.resolve(__dirname, '../ui')))
+app.use(express.static(path.resolve(__dirname, '../frontend/build')))
 
 
 //API endpoints
-app.use('/events', eventsEndPoint)
+app.use('/api/events', eventsEndPoint)
 
 app.listen(app.get('port'), ()=> {
 	console.log("Listening on port: " + app.get('port'))
