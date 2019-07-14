@@ -1,13 +1,13 @@
 import React from 'react'
-import BigCalendar from 'react-big-calendar'
+import { Calendar, momentLocalizer} from 'react-big-calendar'
 import moment from 'moment'
 
-const localizer = BigCalendar.momentLocalizer(moment)
+const localizer = momentLocalizer(moment)
 
 const PageHome = () => {
   return (
     <div className='c-bigcalendar-container'>
-      <BigCalendar
+      <Calendar
         localizer={localizer}
         toolbar={false}
         events={[
