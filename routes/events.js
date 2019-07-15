@@ -5,7 +5,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const router = express.Router()
-const Event = require('./model')
+const Event = require('../models/Event')
 
 //GET | Read All events
 router.get('/', (req, res, next)=>{

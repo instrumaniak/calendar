@@ -5,7 +5,8 @@ const compression = require("compression")
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const path = require("path")
-const eventsEndPoint = require("./routes")
+
+const eventsRouter = require("./routes/events")
 
 //Configure Mongoose
 const MDBURL = process.env.MDBURL || 'mongodb://localhost/calendar'
@@ -30,11 +31,11 @@ app.use(express.urlencoded({extended: true}))
 app.use(compression())
 
 //Serve Static contents
-app.use(express.static(path.resolve(__dirname, '../frontend/build')))
+app.use(express.static(path.resolve(__dirname, 'client/build')))
 
 
 //API endpoints
-app.use('/api/events', eventsEndPoint)
+app.use('/api/events', eventsRouter)
 
 app.listen(app.get('port'), ()=> {
 	console.log("Listening on port: " + app.get('port'))
