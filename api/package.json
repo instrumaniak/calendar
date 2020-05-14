@@ -1,0 +1,20 @@
+{
+  "name": "calendar-webapp-api",
+  "author": "Raziur Rahman",
+  "version": "0.1.0",
+  "description": "The calendar web app API server",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.4",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.9.1"
+  }
+}
