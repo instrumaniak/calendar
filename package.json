@@ -9,7 +9,7 @@
     "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "engines": {
-    "node": "12.x",
+    "node": "10",
     "yarn": "1.x"
   }
 }
