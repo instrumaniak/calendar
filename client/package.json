@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-big-calendar": "^0.22.0",
-    "react-dom": "^16.8.6",
-    "react-feather": "^2.0.3",
-    "react-router-dom": "^5.0.1",
-    "reactstrap": "^8.0.1",
-    "react-scripts": "3.0.1"
+    "bootstrap": "^4.5.0",
+    "moment": "^2.26.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-big-calendar": "^0.24.6",
+    "react-dom": "^16.13.1",
+    "react-feather": "^2.0.8",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "reactstrap": "^8.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
