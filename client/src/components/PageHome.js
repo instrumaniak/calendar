@@ -1,37 +1,52 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Calendar, momentLocalizer} from 'react-big-calendar'
+import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 
 const localizer = momentLocalizer(moment)
 
 const PageHome = () => {
-  const [ events, setEvents ] = useState([])
-  const [ selectedEventID, setSelectedEventID ] = useState('')
+  const [events, setEvents] = useState([])
+  const [selectedEventID, setSelectedEventID] = useState('')
+  const [newEvent, setNewEvent] = useState({})
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch('/api/events')
-      .then(res => res.json())
-      .then(data => setEvents(data))
+      .then((res) => res.json())
+      .then((data) => setEvents(data))
   }, [])
 
-  const handleEventSelect = (event, e) => {
-    if(event._id) {
+  const handleSelectEvent = (event, e) => {
+    if (event._id) {
       setSelectedEventID(event._id)
     }
   }
 
-  if(selectedEventID.length > 0) {
-    return <Redirect to={`/event/${selectedEventID}`} />
+  const handleSelectSlot = (data) => {
+    setNewEvent(data)
+    setSelectedEventID('new')
+  }
+
+  if (selectedEventID.length > 0) {
+    return (
+      <Redirect
+        to={{
+          pathname: `/event/${selectedEventID}`,
+          state: { isNew: selectedEventID === 'new', eventData: newEvent },
+        }}
+      />
+    )
   }
 
   return (
-    <div className='c-bigcalendar-container'>
+    <div className="c-bigcalendar-container">
       <Calendar
+        selectable
         localizer={localizer}
         toolbar={false}
         events={events}
-        onSelectEvent={handleEventSelect}
+        onSelectEvent={handleSelectEvent}
+        onSelectSlot={handleSelectSlot}
       />
     </div>
   )

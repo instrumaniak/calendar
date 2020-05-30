@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const PageEventEdit = ({ match }) => {
   const [eventData, setEventData] = useState({
@@ -11,26 +11,38 @@ const PageEventEdit = ({ match }) => {
   })
 
   const history = useHistory()
+  const location = useLocation()
+
   const eventID = match.params.id
+  const isEditMode = eventID !== 'new'
 
   const goToHomePage = () => history.push('/')
 
   useEffect(() => {
-    fetch(`/api/events/${eventID}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          setEventData({
-            title: data.title || '',
-            start: data.start || '',
-            end: data.end || '',
-            color: data.color || '',
-            info: data.info || '',
-          })
-        }
-      })
-      .catch((err) => console.log(err))
-  }, [eventID])
+    if (isEditMode) {
+      fetch(`/api/events/${eventID}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            setEventData({
+              title: data.title || '',
+              start: data.start || '',
+              end: data.end || '',
+              color: data.color || '',
+              info: data.info || '',
+            })
+          }
+        })
+        .catch((err) => console.log(err))
+    } else {
+      const { state } = location
+      setEventData((prevState) => ({
+        ...prevState,
+        start: state.eventData.start,
+        end: state.eventData.end,
+      }))
+    }
+  }, [eventID, isEditMode, location])
 
   const handleInputChange = (e) => {
     const target = e.target
@@ -59,8 +71,8 @@ const PageEventEdit = ({ match }) => {
   const handleSave = (e) => {
     e.preventDefault()
 
-    fetch(`/api/events/${eventID}`, {
-      method: 'PUT',
+    fetch(`/api/events/${isEditMode ? eventID : ''}`, {
+      method: isEditMode ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(eventData),
     })
@@ -72,7 +84,7 @@ const PageEventEdit = ({ match }) => {
   return (
     <div className="c-page-container">
       <form onSubmit={handleSave}>
-        <legend>Event Details</legend>
+        <legend>{isEditMode ? 'Event details' : 'Create new event'}</legend>
         <div className="form-group ">
           <label className="control-label " htmlFor="title">
             Title
@@ -149,13 +161,17 @@ const PageEventEdit = ({ match }) => {
             >
               Cancel
             </button>{' '}
-            <button
-              className="btn btn-danger"
-              onClick={handleDelete}
-              type="button"
-            >
-              Delete
-            </button>{' '}
+            {isEditMode && (
+              <>
+                <button
+                  className="btn btn-danger"
+                  onClick={handleDelete}
+                  type="button"
+                >
+                  Delete
+                </button>{' '}
+              </>
+            )}
             <button className="btn btn-primary" type="submit">
               Save
             </button>
