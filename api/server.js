@@ -6,8 +6,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const path = require('path')
 
-const eventsRouter = require('./routes/events')
-const usersRouter = require('./routes/users')
+const apiRouter = require('./routes')
 
 //Configure Mongoose
 const MDBURL = process.env.MDBURL || 'mongodb://localhost/calendar'
@@ -16,6 +15,7 @@ mongoose.Promise = global.Promise
 mongoose.connect(MDBURL, {
   useNewUrlParser: true,
   useCreateIndex: true,
+  useUnifiedTopology: true,
 })
 
 const db = mongoose.connection
@@ -33,8 +33,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(compression())
 
 // Register API endpoints
-app.use('/api/events', eventsRouter)
-app.use('/api/users', usersRouter)
+app.use('/api', apiRouter)
 
 //Serve Static contents
 app.use(express.static(path.resolve(__dirname, '../client/build')))
