@@ -1,0 +1,84 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Calendar API docs",
+    "description": "API explorer",
+    "version": "0.1"
+  },
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "events",
+      "description": "Operations related to events data"
+    },
+    {
+      "name": "users",
+      "description": "Operations related to users data"
+    }
+  ],
+  "paths": {
+    "/events": {
+      "get": {
+        "tags": ["events"],
+        "summary": "Get all the events",
+        "description": "Description get events",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Event": {
+      "type": "object",
+      "required": ["title", "start"],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "color": {
+          "type": "string"
+        },
+        "info": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": ["name", "email", "username", "password"],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
