@@ -1,11 +1,8 @@
 import { all } from 'redux-saga/effects'
-
-function* helloSaga() {
-  console.log('Hello from redux saga!')
-}
+import eventsSaga from './eventsSaga'
 
 function* rootSaga() {
-  yield all([helloSaga()])
+  yield all([eventsSaga()])
 }
 
 export default rootSaga

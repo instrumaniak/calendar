@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Routes from './Routes'
-import NavBar from './NavBar'
+import Routes from '../components/Routes'
+import NavBar from '../components/NavBar'
 import { configureStore } from '../store'
 
 // global styles
