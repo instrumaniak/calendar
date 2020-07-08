@@ -1,6 +1,6 @@
 import { call, takeEvery, all, put } from 'redux-saga/effects'
 import * as types from '../actions/types'
-import { fetchEvents } from '../../api/events'
+import { fetchEvents } from '../../apiClient/events'
 import { setEvents, setErrorEvents } from '../actions/eventsAction'
 
 function* handleGetEvents() {
