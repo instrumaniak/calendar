@@ -5,17 +5,17 @@ import moment from 'moment'
 
 const localizer = momentLocalizer(moment)
 
-const PageHome = ({ events }) => {
+const PageHome = ({ events }: { events: any[] }) => {
   const [selectedEventID, setSelectedEventID] = useState('')
   const [newEvent, setNewEvent] = useState({})
 
-  const handleSelectEvent = (event, e) => {
+  const handleSelectEvent = (event: any) => {
     if (event._id) {
       setSelectedEventID(event._id)
     }
   }
 
-  const handleSelectSlot = (data) => {
+  const handleSelectSlot = (data: any) => {
     setNewEvent(data)
     setSelectedEventID('new')
   }

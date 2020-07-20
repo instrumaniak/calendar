@@ -6,7 +6,10 @@ const initialState = {
   errors: null,
 }
 
-function eventsReducer(state = initialState, action) {
+function eventsReducer(
+  state = initialState,
+  action: { type: any; payload: any }
+) {
   switch (action.type) {
     case types.EVENTS_REQUEST:
       return { ...state, isLoading: true, errors: null }

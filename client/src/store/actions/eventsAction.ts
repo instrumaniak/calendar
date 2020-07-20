@@ -4,12 +4,12 @@ export const getEvents = () => ({
   type: types.EVENTS_REQUEST,
 })
 
-export const setEvents = (data) => ({
+export const setEvents = (data: any) => ({
   type: types.EVENTS_SUCCESS,
   payload: data,
 })
 
-export const setErrorEvents = (error) => ({
+export const setErrorEvents = (error: any) => ({
   type: types.EVENTS_FAILED,
   payload: error,
 })

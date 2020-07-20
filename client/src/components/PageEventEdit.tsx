@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
 
-const PageEventEdit = ({ match }) => {
+const PageEventEdit = () => {
   const [eventData, setEventData] = useState({
     title: '',
     start: '',
@@ -12,8 +12,9 @@ const PageEventEdit = ({ match }) => {
 
   const history = useHistory()
   const location = useLocation()
+  const { id: eventID } = useParams()
 
-  const eventID = match.params.id
+  //const eventID = match.params.id
   const isEditMode = eventID !== 'new'
 
   const goToHomePage = () => history.push('/')
@@ -35,16 +36,19 @@ const PageEventEdit = ({ match }) => {
         })
         .catch((err) => console.log(err))
     } else {
-      const { state } = location
-      setEventData((prevState) => ({
-        ...prevState,
-        start: state.eventData.start,
-        end: state.eventData.end,
-      }))
+      // const { state } = location
+      // fix it later
+      // setEventData((prevState) => ({
+      //   ...prevState,
+      //   start: state.eventData.start,
+      //   end: state.eventData.end,
+      // }))
     }
   }, [eventID, isEditMode, location])
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const target = e.target
     const value = target.value
     const name = target.name
@@ -68,7 +72,7 @@ const PageEventEdit = ({ match }) => {
       .catch((err) => console.log(err))
   }
 
-  const handleSave = (e) => {
+  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     fetch(`/api/events/${isEditMode ? eventID : ''}`, {
