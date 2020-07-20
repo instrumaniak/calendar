@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation, useParams } from 'react-router-dom'
 
+interface LocationState {
+  isNew?: boolean
+  eventData?: any
+}
+
 const PageEventEdit = () => {
   const [eventData, setEventData] = useState({
     title: '',
@@ -11,10 +16,9 @@ const PageEventEdit = () => {
   })
 
   const history = useHistory()
-  const location = useLocation()
+  const location = useLocation<LocationState>()
   const { id: eventID } = useParams()
 
-  //const eventID = match.params.id
   const isEditMode = eventID !== 'new'
 
   const goToHomePage = () => history.push('/')
@@ -36,13 +40,14 @@ const PageEventEdit = () => {
         })
         .catch((err) => console.log(err))
     } else {
-      // const { state } = location
-      // fix it later
-      // setEventData((prevState) => ({
-      //   ...prevState,
-      //   start: state.eventData.start,
-      //   end: state.eventData.end,
-      // }))
+      const { state } = location
+      if (state && state.eventData) {
+        setEventData((prevState) => ({
+          ...prevState,
+          start: state.eventData.start,
+          end: state.eventData.end,
+        }))
+      }
     }
   }, [eventID, isEditMode, location])
 
