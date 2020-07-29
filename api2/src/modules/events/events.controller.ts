@@ -1,6 +1,17 @@
-import { Controller, Get, Post, Put, Delete, Param } from '@nestjs/common'
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Param,
+  Body,
+  ValidationPipe
+} from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { EventsService } from './events.service'
+import { EventEntity } from './event.entity'
+import { EventDto, EventParamIdDto } from './event.dto'
 
 @ApiTags('events')
 @Controller('events')
@@ -8,27 +19,34 @@ export class EventsController {
   constructor(private eventsService: EventsService) {}
 
   @Get()
-  findAll() {
+  findAll(): Promise<EventEntity[]> {
     return this.eventsService.findAll()
   }
 
   @Post()
-  create() {
-    return 'create new event'
+  create(
+    @Body(new ValidationPipe({ transform: true, whitelist: true }))
+    createEventDto: EventDto
+  ): Promise<EventEntity> {
+    return this.eventsService.create(createEventDto)
   }
 
   @Get(':id')
-  findById(@Param('id') id: string) {
-    return 'find event by id'
+  findById(@Param() params: EventParamIdDto): Promise<EventEntity> {
+    return this.eventsService.findOne(params.id)
   }
 
   @Put(':id')
-  updateById(@Param('id') id: string) {
-    return 'update event by id'
+  updateById(
+    @Param() params: EventParamIdDto,
+    @Body(new ValidationPipe({ transform: true, whitelist: true }))
+    updateEventDto: EventDto
+  ): Promise<EventEntity> {
+    return this.eventsService.updateOne(params.id, updateEventDto)
   }
 
   @Delete(':id')
-  deleteById(@Param('id') id: string) {
-    return 'delete event by id'
+  deleteById(@Param() params: EventParamIdDto): Promise<void> {
+    return this.eventsService.delete(params.id)
   }
 }
