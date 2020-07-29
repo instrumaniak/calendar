@@ -10,8 +10,8 @@ const PageHome = ({ events }: { events: any[] }) => {
   const [newEvent, setNewEvent] = useState({})
 
   const handleSelectEvent = (event: any) => {
-    if (event._id) {
-      setSelectedEventID(event._id)
+    if (event.id) {
+      setSelectedEventID(event.id)
     }
   }
 
@@ -20,7 +20,7 @@ const PageHome = ({ events }: { events: any[] }) => {
     setSelectedEventID('new')
   }
 
-  if (selectedEventID.length > 0) {
+  if (selectedEventID) {
     return (
       <Redirect
         to={{

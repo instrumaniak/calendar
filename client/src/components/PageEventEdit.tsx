@@ -72,7 +72,7 @@ const PageEventEdit = () => {
     fetch(`/api/events/${eventID}`, {
       method: 'DELETE',
     })
-      .then((res) => res.json())
+      //.then((res) => res.json())
       .then(() => goToHomePage())
       .catch((err) => console.log(err))
   }
