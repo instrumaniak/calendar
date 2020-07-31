@@ -5,8 +5,8 @@
   "description": "The calendar web app.",
   "private": true,
   "scripts": {
-    "start": "cd api && yarn && yarn build && yarn start:prod",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "start": "yarn start:prod",
+    "heroku-postbuild": "cd client && yarn && yarn run build && cd ../api && yarn && yarn build"
   },
   "engines": {
     "node": "12",
