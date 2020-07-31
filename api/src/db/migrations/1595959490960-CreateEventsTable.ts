@@ -17,12 +17,12 @@ export class CreateEventsTable1595959490960 implements MigrationInterface {
       },
       {
         name: 'start',
-        type: 'datetime',
+        type: 'timestamp',
         default: 'current_timestamp'
       },
       {
         name: 'end',
-        type: 'datetime',
+        type: 'timestamp',
         default: 'current_timestamp'
       },
       {
