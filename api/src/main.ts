@@ -1,9 +1,13 @@
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from './modules/app/app.module'
+import * as helmet from 'helmet'
+import * as compression from 'compression'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
+  app.use(helmet.hidePoweredBy())
+  app.use(compression())
   app.setGlobalPrefix('api')
 
   // setup swagger
