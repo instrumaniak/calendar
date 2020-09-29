@@ -1,30 +1,29 @@
 # Calendar
 
-This is a fullstack javascipt web app (Single page application) where events can be add/edit/removed and displayed on a calender view.
-
-The events data are stored in mongodb and served by RESTful api endpoints.
+This is a fullstack JavaScipt web app (written in TypeScript) where events can be add/edit/removed and displayed on a calender view (React frontend). The events data are stored in a PostgreSQL database and served by RESTful api endpoints (NestJS backend).
 
 View live demo from here: https://calendar-webapp.herokuapp.com/
 
 ## How to run locally
 
-Tested with: Ubuntu 20.04, Node: 12.x, Mongodb: 3.6
+Tested with: Ubuntu 20.04, Node: 12.x, PostgreSQL 12.x
 
-Clone this repository and enter into it. You need to have NodeJS, yarn and MongoDB installed in your system.
+Clone this repository and enter into it. You need to have NodeJS, yarn and PostgreSQL installed in your system. Both for frontend and backend the following commands will install dependencies and start the development server:
 
-For backend (Express) enter to `api` folder and run:
+### Backend
+For backend (NestJS) enter to `api` folder and run:
 
 ```bash
 yarn
-yarn dev
-
+yarn start:dev
 ```
+Backend swagger api doc: http://localhost:5000/api/docs/
 
+### Frontend
 For frontend (React) enter to `client` folder and run:
 
 ```bash
 yarn
 yarn start
 ```
-
-Both for frontend and backend those commands will install dependencies and start the development server.
+React dev server: http://localhost:3000/
