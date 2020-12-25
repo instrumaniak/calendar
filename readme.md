@@ -11,10 +11,11 @@ Tested with: Ubuntu 20.04, Node: 12.x, PostgreSQL 12.x
 Clone this repository and enter into it. You need to have NodeJS, yarn and PostgreSQL installed in your system. Both for frontend and backend the following commands will install dependencies and start the development server:
 
 ### Backend
-For backend (NestJS) enter to `api` folder and run:
+For backend (NestJS) enter to `api` folder and create a `.env` file populated with the environment variables of your database name and access credentials. There is a `.env.sample` file which can be used as a starting point. Then for the first time run:
 
 ```bash
 yarn
+yarn migration:run
 yarn start:dev
 ```
 Backend swagger api doc: http://localhost:5000/api/docs/
