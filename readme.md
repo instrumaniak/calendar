@@ -2,7 +2,6 @@
 
 This is a fullstack JavaScipt web app (written in TypeScript) where events can be add/edit/removed and displayed on a calender view (React frontend). The events data are stored in a PostgreSQL database and served by RESTful api endpoints (NestJS backend).
 
-View live demo from here: https://calendar-webapp.herokuapp.com/
 
 ## How to run locally
 
